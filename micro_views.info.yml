@@ -1,0 +1,7 @@
+name: 'Micro Views'
+type: module
+description: 'A simpler Drupal views tool meant for content editors'
+package: Views
+core_version_requirement: ^10 || ^11
+dependencies:
+  - views
