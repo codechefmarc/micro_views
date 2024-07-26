@@ -1,0 +1,46 @@
+<?php
+
+use Drupal\views\Views;
+use Drupal\views\Entity\View;
+
+function micro_views_preprocess_page(&$variables) {
+
+  $view_config = [
+    'id' => 'my_second_custom_view',
+    'label' => 'My Second Custom View',
+    'tag' => 'default',
+    'base_table' => 'node',
+    'status' => FALSE,
+    'description' => 'A custom view created programmatically.',
+    'display' => [
+      'default' => [
+        'display_options' => [
+          'title' => 'My Custom View',
+          'use_ajax' => TRUE,
+          // Other display options...
+        ],
+        'cache' => [
+          'type' => 'none',
+        ],
+        'display_plugin' => 'default',
+        'id' => 'default',
+        'display_title' => 'Master',
+        'type' => 'entity',
+        'display_options' => [
+          'title' => 'Master',
+          'use_ajax' => TRUE,
+          // Other display options...
+        ],
+      ],
+    ],
+  ];
+
+  // Create the view entity.
+  $view_entity = View::create($view_config);
+
+  kint($view_entity->getExecutable()->render());
+
+  // Save the view entity.
+  //$view_entity->save();
+
+}
